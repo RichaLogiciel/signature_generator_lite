@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Signature Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background-image: url("https://logiciel.io/wp-content/uploads/2025/07/Logiciel_Landing-page-baneer-scaled.webp");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 100vh;
+        margin: 0;
+        font-family: sans-serif;
+        padding: 40px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .container {
+        background-color: rgba(0, 0, 0, 0.6); /* darker background */
+        padding: 24px;
+        border-radius: 12px;
+        max-width: 900px;
+        width: 100%;
+        color: white;
+      }
+
+      label {
+        color: white;
+      }
+
+      input {
+        background-color: rgba(255, 255, 255, 0.2);
+        border: 1px solid white;
+        color: white;
+      }
+
+      input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .vertical-divider {
+        border-left: 4px solid hsl(0, 78%, 40%);
+        height: auto;
+        padding: 6px;
+      }
+
+      .preview-name {
+        font-weight: bold;
+        font-size: 1.125rem;
+        color: hsl(220, 15%, 20%);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .preview-text {
+        font-size: 0.875rem;
+        color: hsl(220, 15%, 50%);
+      }
+
+      .social-icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      h1.custom-title {
+        color: darkred;
+      }
+      h2.custom-subtitle {
+        color: white;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      button#copyBtn {
+        background-color: darkred;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container space-y-6">
+      <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold custom-title">
+          Customize Your Signature
+        </h1>
+        <h2 class="text-xl font-medium custom-subtitle mt-1">
+          Create professional email signatures easily
+        </h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-6">
+        <!-- Form -->
+        <div class="space-y-4">
+          <div>
+            <label>Full Name</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Enter full name"
+              class="w-full rounded px-3 py-2"
+            />
+          </div>
+
+          <div>
+            <label>Job Title</label>
+            <input
+              type="text"
+              id="designation"
+              placeholder="Enter job title"
+              class="w-full rounded px-3 py-2"
+            />
+          </div>
+
+          <div>
+            <label>Website Link</label>
+            <input
+              type="text"
+              id="website"
+              placeholder="https://example.com"
+              class="w-full rounded px-3 py-2"
+            />
+          </div>
+
+          <div>
+            <label>Facebook</label>
+            <input
+              type="text"
+              id="fb"
+              placeholder="https://facebook.com/username"
+              class="w-full rounded px-3 py-2"
+            />
+          </div>
+
+          <div>
+            <label>Twitter</label>
+            <input
+              type="text"
+              id="twitter"
+              placeholder="https://twitter.com/username"
+              class="w-full rounded px-3 py-2"
+            />
+          </div>
+
+          <div>
+            <label>Instagram</label>
+            <input
+              type="text"
+              id="insta"
+              placeholder="https://instagram.com/username"
+              class="w-full rounded px-3 py-2"
+            />
+          </div>
+
+          <div>
+            <label>LinkedIn</label>
+            <input
+              type="text"
+              id="linkedin"
+              placeholder="https://linkedin.com/in/username"
+              class="w-full rounded px-3 py-2"
+            />
+          </div>
+        </div>
+
+        <!-- Preview -->
+        <div class="p-4 rounded shadow text-black">
+          <h2 class="text-xl text-white font-semibold mb-2">Live Preview</h2>
+          <div
+            id="signature-preview"
+            class="p-4 border bg-white border-gray-300 rounded font-sans"
+          >
+            <table
+              cellpadding="0"
+              cellspacing="0"
+              style="border-collapse: collapse"
+            >
+              <tbody>
+                <tr>
+                  <!-- Logo aligned top -->
+                  <td class="pr-4 align-top">
+                    <div
+                      class="flex items-start justify-center w-16 h-16 rounded overflow-hidden"
+                      style="background-color: hsl(0, 78%, 40%)"
+                    >
+                      <img
+                        src="https://logiciel.io/wp-content/uploads/2025/09/LS.webp"
+                        alt="Logo"
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+                  </td>
+
+                  <td class="vertical-divider"></td>
+
+                  <td>
+                    <div>
+                      <h3 id="sigName" class="preview-name">Your Name</h3>
+                      <p id="sigDesignation" class="preview-text">
+                        Your Job Title
+                      </p>
+                      <a
+                        id="sigWebsite"
+                        href="#"
+                        class="text-sm block mb-2"
+                        style="text-decoration: underline"
+                        >www.example.com</a
+                      >
+                      <div class="flex gap-2" id="social-links"></div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <button
+          id="copyBtn"
+          class="w-full items-center justify-center text-white mt-2 px-4 py-2 rounded"
+        >
+          Copy Signature
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const nameInput = document.getElementById("name");
+      const designationInput = document.getElementById("designation");
+      const websiteInput = document.getElementById("website");
+      const fbInput = document.getElementById("fb");
+      const twitterInput = document.getElementById("twitter");
+      const instaInput = document.getElementById("insta");
+      const linkedinInput = document.getElementById("linkedin");
+
+      const sigName = document.getElementById("sigName");
+      const sigDesignation = document.getElementById("sigDesignation");
+      const sigWebsite = document.getElementById("sigWebsite");
+      const socialLinks = document.getElementById("social-links");
+
+      // Live preview updates
+      nameInput.addEventListener(
+        "input",
+        () => (sigName.textContent = nameInput.value || "Your Name")
+      );
+      designationInput.addEventListener(
+        "input",
+        () =>
+          (sigDesignation.textContent =
+            designationInput.value || "Your Job Title")
+      );
+      websiteInput.addEventListener("input", () => {
+        sigWebsite.textContent = websiteInput.value || "www.example.com";
+        sigWebsite.href = websiteInput.value || "#";
+      });
+
+      function updateSocial() {
+        socialLinks.innerHTML = "";
+        if (fbInput.value)
+          socialLinks.innerHTML += `<a href="${fbInput.value}" target="_blank"><img class="social-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="FB"/></a>`;
+        if (twitterInput.value) {
+          socialLinks.innerHTML += `
+            <a href="${twitterInput.value}" target="_blank" style="display:inline-flex;align-items:center;">
+            <img src="https://cdn.simpleicons.org/x/000000" alt="X" class="social-icon" style="width:16px;height:16px;"/>
+            </a>`;
+        }
+        if (instaInput.value)
+          socialLinks.innerHTML += `<a href="${instaInput.value}" target="_blank"><img class="social-icon" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="IG"/></a>`;
+        if (linkedinInput.value)
+          socialLinks.innerHTML += `<a href="${linkedinInput.value}" target="_blank"><img class="social-icon" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LN"/></a>`;
+      }
+
+      fbInput.addEventListener("input", updateSocial);
+      twitterInput.addEventListener("input", updateSocial);
+      instaInput.addEventListener("input", updateSocial);
+      linkedinInput.addEventListener("input", updateSocial);
+
+      // Copy preview HTML
+      document.getElementById("copyBtn").addEventListener("click", () => {
+        const preview = document.getElementById("signature-preview");
+        const range = document.createRange();
+        range.selectNode(preview);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        try {
+          document.execCommand("copy");
+          alert("Signature copied to clipboard!");
+        } catch (err) {
+          alert("Failed to copy.");
+        }
+        selection.removeAllRanges();
+      });
+    </script>
+  </body>
+</html>
