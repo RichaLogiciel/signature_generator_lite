@@ -124,7 +124,16 @@
               class="w-full rounded px-3 py-2"
             />
           </div>
-
+          
+          <div>
+            <label>Logo URL</label>
+            <input
+              type="text"
+              id="logoUrl"
+              placeholder="https://example.com/logo.png"
+              class="w-full rounded px-3 py-2"
+            />
+          </div>
           <div>
             <label>Facebook</label>
             <input
@@ -187,6 +196,7 @@
                       style="background-color: hsl(0, 78%, 40%)"
                     >
                       <img
+                        id="sigLogo"
                         src="https://logiciel.io/wp-content/uploads/2025/09/LS.webp"
                         alt="Logo"
                         class="w-full h-full object-cover"
@@ -227,6 +237,8 @@
     </div>
 
     <script>
+      const logoInput = document.getElementById("logoUrl");
+      const sigLogo = document.getElementById("sigLogo");
       const nameInput = document.getElementById("name");
       const designationInput = document.getElementById("designation");
       const websiteInput = document.getElementById("website");
@@ -239,6 +251,12 @@
       const sigDesignation = document.getElementById("sigDesignation");
       const sigWebsite = document.getElementById("sigWebsite");
       const socialLinks = document.getElementById("social-links");
+
+      logoInput.addEventListener("input", () => {
+        sigLogo.src =
+          logoInput.value ||
+          "https://logiciel.io/wp-content/uploads/2025/09/LS.webp";
+      });
 
       // Live preview updates
       nameInput.addEventListener(
